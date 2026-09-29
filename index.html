@@ -1,0 +1,2057 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sharfi Trade | Online Shopping</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #222;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #111827;
+            color: #fff;
+            font-size: 13px;
+            padding: 8px 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 27px;
+            font-weight: 800;
+            color: #ff6b00 !important;
+        }
+
+        .navbar-brand span {
+            color: #111827;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+            margin: 0 8px;
+        }
+
+        .nav-link:hover {
+            color: #ff6b00 !important;
+        }
+
+        .cart-btn {
+            border: none;
+            background: #ff6b00;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 550px;
+            background:
+                linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.25)),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: #ff6b00;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #eee;
+        }
+
+        .btn-main {
+            background: #ff6b00;
+            color: #fff;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .btn-main:hover {
+            background: #e85f00;
+            color: #fff;
+        }
+
+        /* Section */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        /* Categories */
+        .category-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: .3s;
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.1);
+            border-color: #ff6b00;
+        }
+
+        .category-icon {
+            width: 75px;
+            height: 75px;
+            background: #fff0e6;
+            color: #ff6b00;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto auto 15px;
+            font-size: 30px;
+        }
+
+        /* Product */
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            transition: .3s;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #ff6b00;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 6px 0;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 13px;
+            margin-left: 7px;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 13px;
+        }
+
+        .add-cart {
+            width: 100%;
+            margin-top: 12px;
+            border: none;
+            background: #111827;
+            color: #fff;
+            padding: 10px;
+            border-radius: 7px;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .add-cart:hover {
+            background: #ff6b00;
+        }
+
+        /* Search */
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto 35px;
+            position: relative;
+        }
+
+        .search-box input {
+            height: 50px;
+            border-radius: 30px;
+            padding-left: 50px;
+            border: 1px solid #ddd;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            color: #777;
+        }
+
+        /* Features */
+        .feature-box {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #eee;
+        }
+
+        .feature-box i {
+            color: #ff6b00;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .feature-box h5 {
+            font-weight: 600;
+        }
+
+        .feature-box p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: #111827;
+            color: #fff;
+            padding: 60px 0;
+        }
+
+        .newsletter input {
+            height: 50px;
+            border-radius: 7px 0 0 7px;
+        }
+
+        .newsletter button {
+            border-radius: 0 7px 7px 0;
+            background: #ff6b00;
+            color: white;
+            border: none;
+            padding: 0 25px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0b0f18;
+            color: #aaa;
+            padding: 55px 0 20px;
+        }
+
+        footer h5 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #aaa;
+        }
+
+        footer a:hover {
+            color: #ff6b00;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            background: #1c2433;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 7px;
+        }
+
+        /* Cart */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity button {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        .cart-total {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* Toast */
+        .custom-toast {
+            position: fixed;
+            right: 20px;
+            top: 80px;
+            z-index: 9999;
+            display: none;
+        }
+
+        @media(max-width: 768px) {
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .navbar-brand {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <div class="container d-flex justify-content-between">
+        <span><i class="bi bi-truck"></i> Free Delivery on orders above Rs. 3,000</span>
+        <span class="d-none d-md-block">
+            <i class="bi bi-telephone"></i> +92 300 1234567
+        </span>
+    </div>
+</div>
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            Sharfi <span>Trade</span>
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#categories">Categories</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#products">Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+            <button
+                class="cart-btn"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#cartCanvas"
+            >
+                <i class="bi bi-cart3"></i>
+                Cart
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero -->
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <span class="badge bg-warning text-dark mb-3">
+                Welcome to Sharfi Trade
+            </span>
+
+            <h1>
+                Shop Smart.<br>
+                Shop <span>Sharfi Trade.</span>
+            </h1>
+
+            <p>
+                Discover quality products at affordable prices.
+                Easy shopping, fast delivery and trusted service.
+            </p>
+
+            <a href="#products" class="btn btn-main">
+                Shop Now
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Features -->
+<section class="section pb-0" id="about">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="feature-box">
+                    <i class="bi bi-truck"></i>
+                    <h5>Fast Delivery</h5>
+                    <p>Fast and reliable delivery across Pakistan.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-box">
+                    <i class="bi bi-shield-check"></i>
+                    <h5>Secure Payment</h5>
+                    <p>Your orders and payments are handled securely.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-box">
+                    <i class="bi bi-headset"></i>
+                    <h5>24/7 Support</h5>
+                    <p>Our team is available to help you with your order.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-box">
+                    <i class="bi bi-arrow-repeat"></i>
+                    <h5>Easy Returns</h5>
+                    <p>Simple and convenient return process.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Categories -->
+<section class="section" id="categories">
+
+    <div class="container">
+
+        <div class="text-center">
+            <h2 class="section-title">Shop By Category</h2>
+            <p class="section-subtitle">
+                Explore our popular categories
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-6 col-md-3">
+                <div class="category-card category-filter" data-category="Fashion">
+                    <div class="category-icon">
+                        <i class="bi bi-bag"></i>
+                    </div>
+                    <h6>Fashion</h6>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="category-card category-filter" data-category="Electronics">
+                    <div class="category-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <h6>Electronics</h6>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="category-card category-filter" data-category="Home">
+                    <div class="category-icon">
+                        <i class="bi bi-house"></i>
+                    </div>
+                    <h6>Home & Living</h6>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="category-card category-filter" data-category="Beauty">
+                    <div class="category-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+                    <h6>Beauty</h6>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Products -->
+<section class="section bg-light" id="products">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h2 class="section-title">
+                Our Products
+            </h2>
+
+            <p class="section-subtitle">
+                Find your favorite products
+            </p>
+
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                class="form-control"
+                placeholder="Search products..."
+            >
+
+        </div>
+
+
+        <!-- Category Buttons -->
+        <div class="text-center mb-4">
+
+            <button class="btn btn-outline-dark filter-btn active" data-filter="all">
+                All
+            </button>
+
+            <button class="btn btn-outline-dark filter-btn" data-filter="Fashion">
+                Fashion
+            </button>
+
+            <button class="btn btn-outline-dark filter-btn" data-filter="Electronics">
+                Electronics
+            </button>
+
+            <button class="btn btn-outline-dark filter-btn" data-filter="Home">
+                Home
+            </button>
+
+            <button class="btn btn-outline-dark filter-btn" data-filter="Beauty">
+                Beauty
+            </button>
+
+        </div>
+
+
+        <div class="row g-4" id="productContainer">
+
+            <!-- Product 1 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Fashion">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Fashion
+                        </div>
+
+                        <div class="product-title">
+                            Premium Cotton T-Shirt
+                        </div>
+
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 1,499</span>
+                            <span class="old-price">Rs. 1,999</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Premium Cotton T-Shirt"
+                            data-price="1499"
+                            data-image="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Electronics">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Electronics
+                        </div>
+
+                        <div class="product-title">
+                            Wireless Headphones
+                        </div>
+
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 4,999</span>
+                            <span class="old-price">Rs. 6,500</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Wireless Headphones"
+                            data-price="4999"
+                            data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Home">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Home
+                        </div>
+
+                        <div class="product-title">
+                            Modern Sofa
+                        </div>
+
+                        <div class="rating">
+                            ★★★★☆
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 24,999</span>
+                            <span class="old-price">Rs. 30,000</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Modern Sofa"
+                            data-price="24999"
+                            data-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 4 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Beauty">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Beauty
+                        </div>
+
+                        <div class="product-title">
+                            Beauty Makeup Kit
+                        </div>
+
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 2,999</span>
+                            <span class="old-price">Rs. 3,999</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Beauty Makeup Kit"
+                            data-price="2999"
+                            data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 5 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Fashion">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Fashion
+                        </div>
+
+                        <div class="product-title">
+                            Casual Denim Jacket
+                        </div>
+
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 3,499</span>
+                            <span class="old-price">Rs. 4,499</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Casual Denim Jacket"
+                            data-price="3499"
+                            data-image="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 6 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Electronics">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Electronics
+                        </div>
+
+                        <div class="product-title">
+                            Smart Watch
+                        </div>
+
+                        <div class="rating">
+                            ★★★★☆
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 5,999</span>
+                            <span class="old-price">Rs. 7,499</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Smart Watch"
+                            data-price="5999"
+                            data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 7 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Home">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Home
+                        </div>
+
+                        <div class="product-title">
+                            Modern Table Lamp
+                        </div>
+
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 2,499</span>
+                            <span class="old-price">Rs. 3,200</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Modern Table Lamp"
+                            data-price="2499"
+                            data-image="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 8 -->
+            <div class="col-sm-6 col-lg-3 product-item" data-category="Beauty">
+
+                <div class="product-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=600&q=80"
+                        class="product-image"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            Beauty
+                        </div>
+
+                        <div class="product-title">
+                            Skincare Collection
+                        </div>
+
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="price">Rs. 3,299</span>
+                            <span class="old-price">Rs. 4,299</span>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            data-name="Skincare Collection"
+                            data-price="3299"
+                            data-image="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=600&q=80"
+                        >
+                            <i class="bi bi-cart-plus"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Newsletter -->
+<section class="newsletter" id="contact">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6 mb-4 mb-md-0">
+
+                <h2>Subscribe & Get Updates</h2>
+
+                <p class="mb-0">
+                    Get the latest products, offers and discounts.
+                </p>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <form id="newsletterForm" class="d-flex">
+
+                    <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                    <button type="submit">
+                        Subscribe
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+<footer>
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <h5>Sharfi Trade</h5>
+
+                <p>
+                    Your trusted online shopping destination.
+                    Quality products, affordable prices and
+                    reliable service.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-2">
+
+                <h5>Quick Links</h5>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#products">Products</a>
+                    </li>
+
+                    <li>
+                        <a href="#categories">Categories</a>
+                    </li>
+
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <h5>Customer Service</h5>
+
+                <ul>
+
+                    <li>
+                        <a href="#">Privacy Policy</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Terms & Conditions</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Return Policy</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Shipping Policy</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <h5>Contact Us</h5>
+
+                <p>
+                    <i class="bi bi-geo-alt"></i>
+                    Karachi, Pakistan
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone"></i>
+                    +92 300 1234567
+                </p>
+
+                <p>
+                    <i class="bi bi-envelope"></i>
+                    info@sharftrade.com
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr class="border-secondary mt-4">
+
+        <div class="text-center">
+            <small>
+                © 2026 Sharfi Trade. All Rights Reserved.
+            </small>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Cart Offcanvas -->
+<div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="cartCanvas"
+>
+
+    <div class="offcanvas-header">
+
+        <h5 class="offcanvas-title">
+            <i class="bi bi-cart3"></i>
+            Shopping Cart
+        </h5>
+
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+        ></button>
+
+    </div>
+
+
+    <div class="offcanvas-body">
+
+        <div id="cartItems">
+
+            <div class="text-center text-muted py-5">
+
+                <i
+                    class="bi bi-cart-x"
+                    style="font-size:50px;"
+                ></i>
+
+                <p class="mt-3">
+                    Your cart is empty.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-top pt-3 mt-3">
+
+            <div class="d-flex justify-content-between">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span
+                    class="cart-total"
+                    id="cartTotal"
+                >
+                    Rs. 0
+                </span>
+
+            </div>
+
+
+            <button
+                class="btn btn-main w-100 mt-3"
+                id="checkoutBtn"
+            >
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Checkout Modal -->
+<div
+    class="modal fade"
+    id="checkoutModal"
+    tabindex="-1"
+>
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Checkout
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                ></button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <form id="checkoutForm">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="customerName"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                class="form-control"
+                                id="customerPhone"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Delivery Address
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="customerAddress"
+                                rows="3"
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                City
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="customerCity"
+                                required
+                            >
+
+                                <option value="">
+                                    Select City
+                                </option>
+
+                                <option>Karachi</option>
+                                <option>Lahore</option>
+                                <option>Islamabad</option>
+                                <option>Rawalpindi</option>
+                                <option>Faisalabad</option>
+                                <option>Multan</option>
+                                <option>Peshawar</option>
+                                <option>Quetta</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Payment Method
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="paymentMethod"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Payment
+                                </option>
+
+                                <option>
+                                    Cash on Delivery
+                                </option>
+
+                                <option>
+                                    Bank Transfer
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                            <div class="alert alert-light border">
+
+                                <div class="d-flex justify-content-between">
+
+                                    <strong>
+                                        Order Total
+                                    </strong>
+
+                                    <strong id="checkoutTotal">
+                                        Rs. 0
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-main w-100 mt-3"
+                    >
+                        Place Order
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Toast -->
+<div
+    class="toast align-items-center text-bg-success border-0 custom-toast"
+    id="successToast"
+>
+
+    <div class="d-flex">
+
+        <div class="toast-body">
+            Product added to cart!
+        </div>
+
+        <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+        ></button>
+
+    </div>
+
+</div>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<script>
+
+$(document).ready(function () {
+
+    // Cart Array
+    let cart = [];
+
+
+    // ==========================
+    // Add Product To Cart
+    // ==========================
+
+    $(".add-cart").click(function () {
+
+        let name = $(this).data("name");
+        let price = Number($(this).data("price"));
+        let image = $(this).data("image");
+
+        let existingProduct = cart.find(
+            item => item.name === name
+        );
+
+        if (existingProduct) {
+
+            existingProduct.quantity++;
+
+        } else {
+
+            cart.push({
+                name: name,
+                price: price,
+                image: image,
+                quantity: 1
+            });
+
+        }
+
+        updateCart();
+
+        // Bootstrap Toast
+        let toastElement =
+            document.getElementById("successToast");
+
+        let toast =
+            new bootstrap.Toast(toastElement);
+
+        toast.show();
+
+    });
+
+
+    // ==========================
+    // Update Cart
+    // ==========================
+
+    function updateCart() {
+
+        let cartHTML = "";
+        let total = 0;
+        let count = 0;
+
+        if (cart.length === 0) {
+
+            cartHTML = `
+                <div class="text-center text-muted py-5">
+                    <i class="bi bi-cart-x"
+                       style="font-size:50px;"></i>
+
+                    <p class="mt-3">
+                        Your cart is empty.
+                    </p>
+                </div>
+            `;
+
+        } else {
+
+            cart.forEach(function (item, index) {
+
+                let itemTotal =
+                    item.price * item.quantity;
+
+                total += itemTotal;
+                count += item.quantity;
+
+                cartHTML += `
+
+                    <div class="cart-item">
+
+                        <img
+                            src="${item.image}"
+                            alt="${item.name}"
+                        >
+
+                        <div class="cart-item-info">
+
+                            <strong>
+                                ${item.name}
+                            </strong>
+
+                            <div class="text-muted">
+                                Rs. ${item.price.toLocaleString()}
+                            </div>
+
+                            <div class="quantity mt-2">
+
+                                <button
+                                    onclick="decreaseQty(${index})"
+                                >
+                                    -
+                                </button>
+
+                                <span>
+                                    ${item.quantity}
+                                </span>
+
+                                <button
+                                    onclick="increaseQty(${index})"
+                                >
+                                    +
+                                </button>
+
+                                <button
+                                    class="text-danger"
+                                    onclick="removeItem(${index})"
+                                >
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+        }
+
+        $("#cartItems").html(cartHTML);
+
+        $("#cartTotal").text(
+            "Rs. " + total.toLocaleString()
+        );
+
+        $("#cartCount").text(count);
+
+        $("#checkoutTotal").text(
+            "Rs. " + total.toLocaleString()
+        );
+
+    }
+
+
+    // ==========================
+    // Increase Quantity
+    // ==========================
+
+    window.increaseQty = function (index) {
+
+        cart[index].quantity++;
+
+        updateCart();
+
+    };
+
+
+    // ==========================
+    // Decrease Quantity
+    // ==========================
+
+    window.decreaseQty = function (index) {
+
+        if (cart[index].quantity > 1) {
+
+            cart[index].quantity--;
+
+        } else {
+
+            cart.splice(index, 1);
+
+        }
+
+        updateCart();
+
+    };
+
+
+    // ==========================
+    // Remove Product
+    // ==========================
+
+    window.removeItem = function (index) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+    };
+
+
+    // ==========================
+    // Search Products
+    // ==========================
+
+    $("#searchInput").on("keyup", function () {
+
+        let search =
+            $(this).val().toLowerCase();
+
+        $(".product-item").each(function () {
+
+            let productName =
+                $(this)
+                .find(".product-title")
+                .text()
+                .toLowerCase();
+
+            let category =
+                $(this)
+                .data("category")
+                .toLowerCase();
+
+            if (
+                productName.includes(search) ||
+                category.includes(search)
+            ) {
+
+                $(this).show();
+
+            } else {
+
+                $(this).hide();
+
+            }
+
+        });
+
+    });
+
+
+    // ==========================
+    // Product Filter
+    // ==========================
+
+    $(".filter-btn").click(function () {
+
+        $(".filter-btn").removeClass("active");
+
+        $(this).addClass("active");
+
+        let filter =
+            $(this).data("filter");
+
+        if (filter === "all") {
+
+            $(".product-item").show();
+
+        } else {
+
+            $(".product-item").each(function () {
+
+                if (
+                    $(this).data("category") === filter
+                ) {
+
+                    $(this).show();
+
+                } else {
+
+                    $(this).hide();
+
+                }
+
+            });
+
+        }
+
+    });
+
+
+    // ==========================
+    // Category Click
+    // ==========================
+
+    $(".category-filter").click(function () {
+
+        let category =
+            $(this).data("category");
+
+        $("#products")[0].scrollIntoView({
+            behavior: "smooth"
+        });
+
+        $(".filter-btn").removeClass("active");
+
+        $(
+            '.filter-btn[data-filter="' +
+            category +
+            '"]'
+        ).addClass("active");
+
+        $(".product-item").each(function () {
+
+            if (
+                $(this).data("category") === category
+            ) {
+
+                $(this).show();
+
+            } else {
+
+                $(this).hide();
+
+            }
+
+        });
+
+    });
+
+
+    // ==========================
+    // Checkout
+    // ==========================
+
+    $("#checkoutBtn").click(function () {
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty!");
+
+            return;
+
+        }
+
+        let offcanvasElement =
+            document.getElementById("cartCanvas");
+
+        let offcanvas =
+            bootstrap.Offcanvas.getInstance(
+                offcanvasElement
+            );
+
+        if (offcanvas) {
+            offcanvas.hide();
+        }
+
+        let modal =
+            new bootstrap.Modal(
+                document.getElementById("checkoutModal")
+            );
+
+        modal.show();
+
+    });
+
+
+    // ==========================
+    // Place Order
+    // ==========================
+
+    $("#checkoutForm").submit(function (e) {
+
+        e.preventDefault();
+
+        let name =
+            $("#customerName").val();
+
+        let phone =
+            $("#customerPhone").val();
+
+        let address =
+            $("#customerAddress").val();
+
+        let city =
+            $("#customerCity").val();
+
+        let payment =
+            $("#paymentMethod").val();
+
+
+        if (
+            !name ||
+            !phone ||
+            !address ||
+            !city ||
+            !payment
+        ) {
+
+            alert("Please fill all fields.");
+
+            return;
+
+        }
+
+
+        let orderMessage =
+            "New Order - Sharfi Trade%0A%0A" +
+
+            "Customer: " + name + "%0A" +
+
+            "Phone: " + phone + "%0A" +
+
+            "Address: " + address + "%0A" +
+
+            "City: " + city + "%0A" +
+
+            "Payment: " + payment + "%0A%0A" +
+
+            "Products:%0A";
+
+
+        let total = 0;
+
+
+        cart.forEach(function (item) {
+
+            let itemTotal =
+                item.price * item.quantity;
+
+            total += itemTotal;
+
+            orderMessage +=
+                "- " +
+                item.name +
+                " x " +
+                item.quantity +
+                " = Rs. " +
+                itemTotal +
+                "%0A";
+
+        });
+
+
+        orderMessage +=
+            "%0ATotal: Rs. " +
+            total;
+
+
+        /*
+            IMPORTANT:
+            Replace 923001234567 with your
+            actual WhatsApp number.
+        */
+
+        let whatsappNumber =
+            "923001234567";
+
+
+        let whatsappURL =
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            orderMessage;
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+
+        // Clear cart
+        cart = [];
+
+        updateCart();
+
+        $("#checkoutForm")[0].reset();
+
+
+        let modalElement =
+            document.getElementById("checkoutModal");
+
+        let modal =
+            bootstrap.Modal.getInstance(
+                modalElement
+            );
+
+        modal.hide();
+
+    });
+
+
+    // ==========================
+    // Newsletter
+    // ==========================
+
+    $("#newsletterForm").submit(function (e) {
+
+        e.preventDefault();
+
+        let email =
+            $(this).find("input").val();
+
+        alert(
+            "Thank you! " +
+            email +
+            " has been subscribed."
+        );
+
+        $(this)[0].reset();
+
+    });
+
+
+    // Initial cart
+    updateCart();
+
+});
+
+</script>
+
+</body>
+</html>
